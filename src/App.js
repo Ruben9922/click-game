@@ -27,7 +27,7 @@ class App extends Component {
       ],
       clicks: 0,
       cps: 0
-    }
+    };
 
     this.handleMainButtonClick = this.handleMainButtonClick.bind(this);
   }
