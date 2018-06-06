@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Statistic, Icon, Popup, Button} from 'semantic-ui-react';
+import {Button, Icon, Popup, Statistic} from 'semantic-ui-react';
 
 class Score extends Component {
   render() {
@@ -29,7 +29,8 @@ class Score extends Component {
             </Statistic.Value>
           </Statistic>
         </Statistic.Group>
-        <Button primary size="massive" style={{marginTop: "30px", marginBottom: "30px"}}>Click here!</Button>
+        <Button primary size="massive" onClick={this.props.incrementClicks}
+                style={{marginTop: "30px", marginBottom: "30px"}}>Click here!</Button>
       </div>
     );
   }

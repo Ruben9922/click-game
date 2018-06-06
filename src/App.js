@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Grid, Container, Header} from 'semantic-ui-react';
+import {Container, Grid, Header} from 'semantic-ui-react';
 import Shop from "./Shop";
 import Score from "./Score";
 
@@ -28,6 +28,14 @@ class App extends Component {
       clicks: 0,
       cps: 0
     }
+
+    this.handleMainButtonClick = this.handleMainButtonClick.bind(this);
+  }
+
+  handleMainButtonClick() {
+    return this.setState(prevState => ({
+      clicks: prevState.clicks + 1
+    }));
   }
 
   render() {
@@ -37,7 +45,7 @@ class App extends Component {
           <Header as="h1" textAlign="center">Click Game</Header>
           <Grid columns={2} divided>
             <Grid.Column width={11}>
-              <Score clicks={this.state.clicks} cps={this.state.cps}/>
+              <Score clicks={this.state.clicks} cps={this.state.cps} incrementClicks={this.handleMainButtonClick}/>
             </Grid.Column>
             <Grid.Column width={5}>
               <Shop items={this.state.items}/>
