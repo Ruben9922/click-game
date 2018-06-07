@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Card, Header, Progress} from 'semantic-ui-react';
+import {Button, Card, Header, Label, Progress} from 'semantic-ui-react';
 
 class Shop extends Component {
   render() {
@@ -11,11 +11,16 @@ class Shop extends Component {
             <Card key={index}>
               <Progress value={this.props.clicks} total={item.price} color="blue" attached="top"/>
               <Card.Content>
-                <Card.Header>{item.name}</Card.Header>
+                <Card.Header>
+                  {item.name}
+                  &nbsp;
+                  <Label circular>
+                    {item.quantityOwned}
+                  </Label>
+                </Card.Header>
                 <Card.Meta>
                   Costs {item.price} clicks<br/>
                   Increases CPS by {item.cpsIncrement}<br/>
-                  {item.quantityOwned} owned
                 </Card.Meta>
               </Card.Content>
               <Card.Content extra>
