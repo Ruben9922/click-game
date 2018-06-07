@@ -13,7 +13,8 @@ class Shop extends Component {
                 <Card.Header>{item.name}</Card.Header>
                 <Card.Meta>
                   Costs {item.price} clicks<br/>
-                  Increases CPS by {item.cpsIncrement}
+                  Increases CPS by {item.cpsIncrement}<br/>
+                  {item.quantityOwned} owned
                 </Card.Meta>
               </Card.Content>
               <Card.Content extra>
