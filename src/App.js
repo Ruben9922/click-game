@@ -33,12 +33,26 @@ class App extends Component {
     };
 
     this.handleMainButtonClick = this.handleMainButtonClick.bind(this);
+    this.handlePurchaseButtonClick = this.handlePurchaseButtonClick.bind(this);
   }
 
   handleMainButtonClick() {
     return this.setState(prevState => ({
       clicks: prevState.clicks + 1
     }));
+  }
+
+  handlePurchaseButtonClick(index) {
+    this.setState(prevState => {
+      let items = prevState.items;
+      let item = items[index];
+      let updatedItem = Object.assign({}, item, {quantityOwned: item.quantityOwned + 1});
+      let updatedItems = items.slice();
+      updatedItems.splice(index, 1, updatedItem);
+      return {
+        items: updatedItems
+      }
+    });
   }
 
   render() {
@@ -51,7 +65,7 @@ class App extends Component {
               <Score clicks={this.state.clicks} cps={this.state.cps} incrementClicks={this.handleMainButtonClick}/>
             </Grid.Column>
             <Grid.Column width={5}>
-              <Shop items={this.state.items}/>
+              <Shop items={this.state.items} incrementQuantityOwned={this.handlePurchaseButtonClick}/>
             </Grid.Column>
           </Grid>
         </Container>
