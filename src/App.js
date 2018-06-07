@@ -12,9 +12,9 @@ class App extends Component {
       items: [
         {
           name: "90's ball mouse",
-          price: 20,
+          price: 10,
           quantityOwned: 0,
-          cpsIncrement: 0.2
+          cpsIncrement: 0.5
         },
         {
           name: "Basic optical mouse",
