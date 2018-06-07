@@ -45,19 +45,23 @@ class App extends Component {
 
   handlePurchaseButtonClick(index) {
     this.setState(prevState => {
-      let {items, clicks} = prevState;
+      let {items, clicks, cps} = prevState;
       let item = items[index];
       if (clicks >= item.price) {
         let updatedItem = Object.assign({}, item, {quantityOwned: item.quantityOwned + 1});
         let updatedItems = items.slice();
         updatedItems.splice(index, 1, updatedItem);
 
-        // Subtract price from total clicks
+        // Subtract item price from total clicks
         let updatedClicks = clicks - item.price;
+
+        // Add item CPS increment to CPS
+        let updatedCps = cps + item.cpsIncrement;
 
         return {
           items: updatedItems,
-          clicks: updatedClicks
+          clicks: updatedClicks,
+          cps: updatedCps
         };
       } else {
         return {};
