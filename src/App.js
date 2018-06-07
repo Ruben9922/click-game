@@ -12,17 +12,20 @@ class App extends Component {
         {
           name: "90's ball mouse",
           price: 20,
-          quantityOwned: 0
+          quantityOwned: 0,
+          cpsIncrement: 0.2
         },
         {
           name: "Basic optical mouse",
           price: 100,
-          quantityOwned: 0
+          quantityOwned: 0,
+          cpsIncrement: 1
         },
         {
           name: "Decent wireless mouse",
           price: 200,
-          quantityOwned: 0
+          quantityOwned: 0,
+          cpsIncrement: 2
         },
       ],
       clicks: 0,
