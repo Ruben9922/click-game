@@ -50,8 +50,13 @@ class App extends Component {
         let updatedItem = Object.assign({}, item, {quantityOwned: item.quantityOwned + 1});
         let updatedItems = items.slice();
         updatedItems.splice(index, 1, updatedItem);
+
+        // Subtract price from total clicks
+        let updatedClicks = clicks - item.price;
+
         return {
-          items: updatedItems
+          items: updatedItems,
+          clicks: updatedClicks
         };
       } else {
         return {};
