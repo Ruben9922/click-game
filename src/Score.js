@@ -16,7 +16,7 @@ class Score extends Component {
           </Statistic>
           <Statistic>
             <Statistic.Label>
-              Clicks per second
+              Clicks per second (CPS)
               &nbsp;
               <Popup trigger={<Icon name="question circle" color="blue"/>}>
                 This is the amount by which the <b>Total Clicks</b> increases automatically each second.
