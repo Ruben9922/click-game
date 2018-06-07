@@ -12,19 +12,19 @@ class App extends Component {
       items: [
         {
           name: "90's ball mouse",
-          price: 10,
+          initialPrice: 10,
           quantityOwned: 0,
           cpsIncrement: 0.5
         },
         {
           name: "Basic optical mouse",
-          price: 100,
+          initialPrice: 100,
           quantityOwned: 0,
           cpsIncrement: 1
         },
         {
           name: "Decent wireless mouse",
-          price: 200,
+          initialPrice: 200,
           quantityOwned: 0,
           cpsIncrement: 2
         },
@@ -32,6 +32,11 @@ class App extends Component {
       clicks: 0,
       cps: 0
     };
+
+    // Initialise item prices to their initial prices
+    for (let item of this.state.items) {
+      item.price = item.initialPrice;
+    }
 
     this.handleMainButtonClick = this.handleMainButtonClick.bind(this);
     this.handlePurchaseButtonClick = this.handlePurchaseButtonClick.bind(this);
@@ -48,7 +53,10 @@ class App extends Component {
       let {items, clicks, cps} = prevState;
       let item = items[index];
       if (clicks >= item.price) {
-        let updatedItem = Object.assign({}, item, {quantityOwned: item.quantityOwned + 1});
+        let updatedItem = Object.assign({}, item, {
+          quantityOwned: item.quantityOwned + 1, // Increment quantity owned
+          price: Math.round(item.initialPrice * (1 + (0.1 * Math.pow(item.quantityOwned + 1, 1.6)))) // Increase price
+        });
         let updatedItems = items.slice();
         updatedItems.splice(index, 1, updatedItem);
 
