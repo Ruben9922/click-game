@@ -51,7 +51,7 @@ class App extends Component {
       updatedItems.splice(index, 1, updatedItem);
       return {
         items: updatedItems
-      }
+      };
     });
   }
 
