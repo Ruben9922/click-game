@@ -29,7 +29,7 @@ class Score extends Component {
             </Statistic.Value>
           </Statistic>
         </Statistic.Group>
-        <Button primary size="massive" onClick={this.props.incrementClicks}
+        <Button primary size="massive" onClick={this.props.onMainButtonClick}
                 style={{marginTop: "30px", marginBottom: "30px"}}>Click here!</Button>
       </div>
     );

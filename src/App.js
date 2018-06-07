@@ -71,10 +71,10 @@ class App extends Component {
           <Header as="h1" textAlign="center">Click Game</Header>
           <Grid columns={2} divided>
             <Grid.Column width={11}>
-              <Score clicks={this.state.clicks} cps={this.state.cps} incrementClicks={this.handleMainButtonClick}/>
+              <Score clicks={this.state.clicks} cps={this.state.cps} onMainButtonClick={this.handleMainButtonClick}/>
             </Grid.Column>
             <Grid.Column width={5}>
-              <Shop items={this.state.items} incrementQuantityOwned={this.handlePurchaseButtonClick}
+              <Shop items={this.state.items} onPurchaseButtonClick={this.handlePurchaseButtonClick}
                     clicks={this.state.clicks}/>
             </Grid.Column>
           </Grid>
