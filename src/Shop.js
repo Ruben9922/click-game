@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Card, Header} from 'semantic-ui-react';
+import {Button, Card, Header, Progress} from 'semantic-ui-react';
 
 class Shop extends Component {
   render() {
@@ -9,6 +9,7 @@ class Shop extends Component {
         <Card.Group centered>
           {this.props.items.map((item, index) => (
             <Card key={index}>
+              <Progress value={this.props.clicks} total={item.price} color="blue" attached="top"/>
               <Card.Content>
                 <Card.Header>{item.name}</Card.Header>
                 <Card.Meta>
