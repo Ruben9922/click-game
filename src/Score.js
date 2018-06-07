@@ -5,7 +5,7 @@ class Score extends Component {
   render() {
     return (
       <div className="App" style={{marginTop: "50px", marginBottom: "50px", textAlign: "center"}}>
-        <Statistic.Group widths={2} className="centerh" style={{width: "50%"}}>
+        <Statistic.Group widths={2} className="centerh" style={{width: "65%"}}>
           <Statistic>
             <Statistic.Label>Total Clicks</Statistic.Label>
             <Statistic.Value>
