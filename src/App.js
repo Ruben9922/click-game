@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Container, Grid, Header} from 'semantic-ui-react';
 import Shop from "./Shop";
 import Score from "./Score";
+import './App.css';
 
 class App extends Component {
   constructor(props) {
