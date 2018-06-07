@@ -69,6 +69,20 @@ class App extends Component {
     });
   }
 
+  tick() {
+    this.setState(prevState => ({
+      clicks: prevState.clicks + prevState.cps
+    }));
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(() => this.tick(), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
   render() {
     return (
       <div className="App">

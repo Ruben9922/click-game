@@ -11,7 +11,7 @@ class Score extends Component {
             <Statistic.Value>
               <Icon name="mouse pointer"/>
               &nbsp;
-              {this.props.clicks}
+              {Math.floor(this.props.clicks)}
             </Statistic.Value>
           </Statistic>
           <Statistic>
@@ -25,7 +25,7 @@ class Score extends Component {
             <Statistic.Value>
               <Icon name="tachometer alternate"/>
               &nbsp;
-              {this.props.cps}
+              {this.props.cps.toFixed(1)}
             </Statistic.Value>
           </Statistic>
         </Statistic.Group>
