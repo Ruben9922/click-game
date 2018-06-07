@@ -18,7 +18,8 @@ class Shop extends Component {
                 </Card.Meta>
               </Card.Content>
               <Card.Content extra>
-                <Button color="blue" fluid onClick={() => this.props.incrementQuantityOwned(index)}>
+                <Button color="blue" fluid onClick={() => this.props.incrementQuantityOwned(index)}
+                        disabled={this.props.clicks < item.price}>
                   Purchase
                 </Button>
               </Card.Content>

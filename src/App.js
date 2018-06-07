@@ -74,7 +74,8 @@ class App extends Component {
               <Score clicks={this.state.clicks} cps={this.state.cps} incrementClicks={this.handleMainButtonClick}/>
             </Grid.Column>
             <Grid.Column width={5}>
-              <Shop items={this.state.items} incrementQuantityOwned={this.handlePurchaseButtonClick}/>
+              <Shop items={this.state.items} incrementQuantityOwned={this.handlePurchaseButtonClick}
+                    clicks={this.state.clicks}/>
             </Grid.Column>
           </Grid>
         </Container>
