@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Grid, Header} from 'semantic-ui-react';
+import {Container, Grid, Header, Icon, Menu} from 'semantic-ui-react';
 import Shop from "./Shop";
 import Score from "./Score";
 import './App.css';
@@ -94,8 +94,23 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Container>
-          <Header as="h1" textAlign="center">Click Game</Header>
+        <Menu fixed="top" inverted>
+          <Container>
+            <Menu.Item header link href=".">Wordsearch Generator</Menu.Item>
+            <Menu.Menu position="right">
+              <Menu.Item link href="//rubendougall.co.uk/">
+                <Icon name="arrow left"/>
+                Back to Main Website
+              </Menu.Item>
+              <Menu.Item link href="https://github.com/Ruben9922/click-game">
+                <Icon name="github"/>
+                GitHub
+              </Menu.Item>
+            </Menu.Menu>
+          </Container>
+        </Menu>
+        <Container style={{marginTop: "4em"}}>
+          <Header as="h1" textAlign="center" style={{marginTop: "2.5em", marginBottom: "1em"}}>Click Game</Header>
           <Grid columns={2} divided>
             <Grid.Column width={11}>
               <Score clicks={this.state.clicks} cps={this.state.cps} onMainButtonClick={this.handleMainButtonClick}/>
