@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Container, Grid, Header, Icon, Menu} from 'semantic-ui-react';
 import Shop from "./Shop";
 import Score from "./Score";
+import firebase from "./firebase";
 import './App.css';
 
 class App extends Component {
@@ -30,7 +31,8 @@ class App extends Component {
         },
       ],
       clicks: 0,
-      cps: 0
+      cps: 0,
+      user: null
     };
 
     // Initialise item prices to their initial prices
@@ -40,6 +42,8 @@ class App extends Component {
 
     this.handleMainButtonClick = this.handleMainButtonClick.bind(this);
     this.handlePurchaseButtonClick = this.handlePurchaseButtonClick.bind(this);
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   handleMainButtonClick() {
@@ -83,8 +87,29 @@ class App extends Component {
     }));
   }
 
+  async login() {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    const result = await firebase.auth().signInWithPopup(provider);
+    this.setState({
+      user: result.user
+    });
+  }
+
+  async logout() {
+    await firebase.auth().signOut();
+    this.setState({
+      user: null
+    });
+  }
+
   componentDidMount() {
     this.timerID = setInterval(() => this.tick(), 1000);
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      this.setState({
+        user: user
+      });
+    });
   }
 
   componentWillUnmount() {
@@ -102,6 +127,14 @@ class App extends Component {
                 <Icon name="arrow left"/>
                 Back to Main Website
               </Menu.Item>
+              {this.state.user === null ? (
+                <Menu.Item link onClick={this.login}>
+                  Log In
+                </Menu.Item>) : (
+                <Menu.Item link onClick={this.logout}>
+                  Log Out
+                </Menu.Item>
+              )}
               <Menu.Item link href="https://github.com/Ruben9922/click-game">
                 <Icon name="github"/>
                 GitHub
