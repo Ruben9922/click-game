@@ -105,11 +105,9 @@ class App extends Component {
   componentDidMount() {
     this.timerID = setInterval(() => this.tick(), 1000);
 
-    firebase.auth().onAuthStateChanged(function (user) {
-      this.setState({
-        user: user
-      });
-    });
+    firebase.auth().onAuthStateChanged(user => this.setState({
+      user: user
+    }));
   }
 
   componentWillUnmount() {
