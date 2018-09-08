@@ -96,7 +96,7 @@ class App extends Component {
       <div className="App">
         <Menu fixed="top" inverted>
           <Container>
-            <Menu.Item header link href=".">Wordsearch Generator</Menu.Item>
+            <Menu.Item header link href=".">Click Game</Menu.Item>
             <Menu.Menu position="right">
               <Menu.Item link href="//rubendougall.co.uk/">
                 <Icon name="arrow left"/>
