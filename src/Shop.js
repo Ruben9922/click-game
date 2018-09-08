@@ -4,7 +4,7 @@ import {Button, Card, Header, Label, Progress} from 'semantic-ui-react';
 class Shop extends Component {
   render() {
     return (
-      <div className="App">
+      <div>
         <Header as="h2" textAlign="center">Shop</Header>
         <Card.Group centered>
           {this.props.items.map((item, index) => (
