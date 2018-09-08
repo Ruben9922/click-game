@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Grid, Header, Icon, Menu} from 'semantic-ui-react';
+import {Container, Grid, Header, Icon, Menu, Message} from 'semantic-ui-react';
 import Shop from "./Shop";
 import Score from "./Score";
 import './App.css';
@@ -111,6 +111,17 @@ class App extends Component {
         </Menu>
         <Container style={{marginTop: "4em"}}>
           <Header as="h1" textAlign="center" style={{marginTop: "2.5em", marginBottom: "1em"}}>Click Game</Header>
+
+          <Message warning icon>
+            <Icon name='warning sign'/>
+            <Message.Content>
+              <Message.Header>Progress not saved</Message.Header>
+              <p>Game state is currently <strong>not saved</strong>, so any progress will be lost upon refreshing or closing the page. This is something I plan to add in future.
+              </p>
+            </Message.Content>
+          </Message>
+          <br/>
+
           <Grid columns={2} divided>
             <Grid.Column width={11}>
               <Score clicks={this.state.clicks} cps={this.state.cps} onMainButtonClick={this.handleMainButtonClick}/>
