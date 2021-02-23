@@ -1,7 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Button, Icon, Popup, Statistic} from 'semantic-ui-react';
 
-export default function Score({clicks, cps, onMainButtonClick}) {
+type ScoreProps = {
+  clicks: number;
+  cps: number;
+  onMainButtonClick: () => void;
+};
+
+export default function Score({
+                                clicks,
+                                cps,
+                                onMainButtonClick
+}: ScoreProps) {
   return (
     <div style={{marginTop: "50px", marginBottom: "50px", textAlign: "center"}}>
       <Statistic.Group widths={2} className="centerh" style={{width: "65%"}}>

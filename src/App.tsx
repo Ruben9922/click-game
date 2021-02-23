@@ -6,7 +6,27 @@ import './App.css';
 import {useImmerReducer} from "use-immer";
 import {v4 as uuidv4} from "uuid";
 
-const items = {
+export type Items = Record<string, {name: string, initialPrice: number, cpsIncrement: number}>;
+
+export interface ItemInstance {
+  id: string;
+  itemKey: string;
+  quantityOwned: number;
+  price: number;
+}
+
+type State = {
+  itemInstances: ItemInstance[];
+  clicks: number;
+  cps: number;
+};
+
+type Action =
+  | { type: "purchase", index: number }
+  | { type: "click" }
+  | { type: "autoClick" };
+
+const items: Items = {
   ballMouse: {
     name: "90's ball mouse",
     initialPrice: 10,
@@ -24,40 +44,42 @@ const items = {
   },
 };
 
-function generateItemInstances() {
+function generateItemInstances(): ItemInstance[] {
   return Object.entries(items).map(([k, v]) => ({
     id: uuidv4(),
-    item: k,
+    itemKey: k,
     quantityOwned: 0,
-    price: v.price,
+    price: v.initialPrice,
   }));
 }
 
 // TODO: Merge with existing using, e.g., Object.assign()
-const initialState = {
+const initialState: State = {
   itemInstances: generateItemInstances(),
   clicks: 0,
   cps: 0,
 };
 
-function reducer(draft, action) {
+function reducer(draft: State, action: Action) {
   switch (action.type) {
     case "purchase":
       let itemInstance = draft.itemInstances[action.index];
 
       // Only if the user has enough clicks
       if (draft.clicks >= itemInstance.price) {
+        const item = items[itemInstance.itemKey];
+
         // Increment quantity owned
         itemInstance.quantityOwned++;
 
         // Inflate price
-        itemInstance.price = Math.round(itemInstance.item.initialPrice * (1 + (0.1 * Math.pow(itemInstance.quantityOwned, 1.6))));
+        itemInstance.price = Math.round(item.initialPrice * (1 + (0.1 * Math.pow(itemInstance.quantityOwned, 1.6))));
 
         // Subtract item price from total clicks
         draft.clicks -= itemInstance.price;
 
         // Add item's CPS increment to total CPS
-        draft.cps += itemInstance.item.cpsIncrement;
+        draft.cps += item.cpsIncrement;
       }
       return;
     case "click":
@@ -71,16 +93,14 @@ function reducer(draft, action) {
 
 export default function App() {
   const [state, dispatch] = useImmerReducer(reducer, initialState);
-  const [timerId, setTimerId] = useState(null);
+  const [timerId, setTimerId] = useState<number | null>(null);
 
   useEffect(() => {
-    setTimerId(setInterval(() => dispatch({type: "autoClick"}), 1000));
+    setTimerId(window.setInterval(() => dispatch({type: "autoClick"}), 1000));
 
     return () => {
-      if (timerId !== null) {
-        clearInterval(timerId);
-      }
-    }
+      window.clearInterval(timerId as number);
+    };
   }, []);
 
   return (
@@ -115,7 +135,11 @@ export default function App() {
 
         <Grid columns={2} divided>
           <Grid.Column width={11}>
-            <Score clicks={state.clicks} cps={state.cps} onMainButtonClick={() => dispatch({type: "click"})}/>
+            <Score
+              clicks={state.clicks}
+              cps={state.cps}
+              onMainButtonClick={() => dispatch({type: "click"})}
+            />
           </Grid.Column>
           <Grid.Column width={5}>
             <Shop
