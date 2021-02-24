@@ -72,11 +72,11 @@ function reducer(draft: State, action: Action) {
         // Increment quantity owned
         itemInstance.quantityOwned++;
 
-        // Inflate price
-        itemInstance.price = Math.round(item.initialPrice * (1 + (0.1 * Math.pow(itemInstance.quantityOwned, 1.6))));
-
         // Subtract item price from total clicks
         draft.clicks -= itemInstance.price;
+
+        // Inflate price
+        itemInstance.price = Math.round(item.initialPrice * (1 + (0.1 * Math.pow(itemInstance.quantityOwned, 1.6))));
 
         // Add item's CPS increment to total CPS
         draft.cps += item.cpsIncrement;
