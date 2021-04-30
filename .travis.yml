@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - 14
+script:
+  - npm run-script build
+deploy:
+  provider: netlify
+  site: 080eab2e-f9a2-4019-b864-c90d65cf604d
+  prod: true
+  edge: true
