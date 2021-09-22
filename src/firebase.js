@@ -7,7 +7,7 @@ const firebaseConfig = {
   projectId: "click-game-2459c",
   storageBucket: "click-game-2459c.appspot.com",
   messagingSenderId: "908323579970",
-  appId: "1:908323579970:web:3d121d8fa6f47ae815e5db"
+  appId: "1:908323579970:web:3d121d8fa6f47ae815e5db",
 };
 firebase.initializeApp(firebaseConfig);
 export default firebase;
