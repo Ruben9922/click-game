@@ -92,7 +92,7 @@ function reducer(draft: State, action: Action) {
   }
 }
 
-export default function App() {
+export default function App(): JSX.Element {
   const [state, dispatch] = useImmerReducer(reducer, initialState);
   const [timerId, setTimerId] = useState<number | null>(null);
 
@@ -100,7 +100,9 @@ export default function App() {
     setTimerId(window.setInterval(() => dispatch({type: "autoClick"}), 1000));
 
     return () => {
-      window.clearInterval(timerId!);
+      if (timerId !== null) {
+        window.clearInterval(timerId);
+      }
     };
   }, [dispatch, timerId]);
 

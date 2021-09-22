@@ -14,7 +14,7 @@ export default function Shop({
                                items,
                                clicks,
                                onPurchaseButtonClick
-}: ShopProps) {
+}: ShopProps): JSX.Element {
   return (
     <div>
       <Header as="h2" textAlign="center">Shop</Header>

@@ -11,7 +11,7 @@ export default function Score({
                                 clicks,
                                 cps,
                                 onMainButtonClick
-}: ScoreProps) {
+}: ScoreProps): JSX.Element {
   return (
     <div style={{marginTop: "50px", marginBottom: "50px", textAlign: "center"}}>
       <Statistic.Group widths={2} className="centerh" style={{width: "65%"}}>
