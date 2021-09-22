@@ -99,7 +99,7 @@ export default function App() {
     setTimerId(window.setInterval(() => dispatch({type: "autoClick"}), 1000));
 
     return () => {
-      window.clearInterval(timerId as number);
+      window.clearInterval(timerId!);
     };
   }, []);
 
