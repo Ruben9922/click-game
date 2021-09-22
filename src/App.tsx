@@ -101,7 +101,7 @@ export default function App() {
     return () => {
       window.clearInterval(timerId!);
     };
-  }, []);
+  }, [dispatch, timerId]);
 
   return (
     <div className="App">
