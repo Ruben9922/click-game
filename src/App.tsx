@@ -62,8 +62,8 @@ const initialState: State = {
 
 function reducer(draft: State, action: Action) {
   switch (action.type) {
-    case "purchase":
-      let itemInstance = draft.itemInstances[action.index];
+    case "purchase": {
+      const itemInstance = draft.itemInstances[action.index];
 
       // Only if the user has enough clicks
       if (draft.clicks >= itemInstance.price) {
@@ -82,6 +82,7 @@ function reducer(draft: State, action: Action) {
         draft.cps += item.cpsIncrement;
       }
       return;
+    }
     case "click":
       draft.clicks++;
       return;
